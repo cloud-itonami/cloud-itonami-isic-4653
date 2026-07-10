@@ -1,0 +1,11 @@
+{:itonami.blueprint/id "cloud-itonami-isic-4653"
+ :itonami.blueprint/name "Wholesale of agricultural machinery, equipment and supplies"
+ :itonami.blueprint/isic-rev5 "4653"
+ :itonami.blueprint/domain :downstream/agricultural-machinery-wholesale
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:equipment-safety :air-quality :transparency]
+ :itonami.blueprint/governor :ag-equipment-governor
+ :itonami.blueprint/required-technologies [:identity :forms :dmn :bpmn :audit-ledger :optimization]
+ :itonami.blueprint/status :public-oss
+ :itonami.blueprint/robotics false
+ :itonami.blueprint/maturity :implemented}
