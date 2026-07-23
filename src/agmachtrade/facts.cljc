@@ -71,8 +71,42 @@
     'Jurisdiction coverage (honest)' for independent verification). EU
     financial sanctions regulations apply as in every sibling's own
     counterparty-diligence checklist.
+  - JPN (the emissions-regulatory analog of the US Tier / EU Stage V
+    regime for agricultural machinery): the Ministry of Land,
+    Infrastructure, Transport and Tourism (MLIT), jointly with the
+    Ministry of the Environment (MOE) and the Ministry of Economy,
+    Trade and Industry (METI) as the three 'competent ministers' (主務
+    大臣) named in Art. 34, administer the 特定特殊自動車排出ガスの規制等に
+    関する法律 (Act on Regulation, etc. of Emissions from Non-road
+    Special Motor Vehicles; official abbreviation オフロード法 / 'Off-road
+    Law'; Act No. 51 of 2005). Art. 1 states its purpose as curbing
+    emissions from specified non-road special motor vehicles ('特定特殊
+    自動車排出ガスの排出を抑制し...国民の健康を保護するとともに生活環境を保全す
+    ることを目的とする'). Art. 2 defines '特定特殊自動車' by cross-reference to
+    the 大型特殊自動車 ('large special motor vehicle') / 小型特殊自動車
+    ('small special motor vehicle') categories of the Road Vehicles Act
+    (道路運送車両法) Art. 3 -- and 道路運送車両法施行規則 別表第一 (Appended
+    Table 1, made under Art. 1 of that Enforcement Regulation)
+    explicitly enumerates '農耕トラクタ、農業用薬剤散布車、刈取脱穀作業車、田植機
+    及び国土交通大臣の指定する農耕作業用自動車' (agricultural tractors,
+    agricultural chemical sprayers, reaping-and-threshing machines, rice
+    transplanters, and other MLIT-designated agricultural work
+    vehicles) under 大型特殊自動車 -- confirming agricultural machinery is
+    squarely in scope, structurally parallel to how USA/DEU's own Tier /
+    Stage V regimes cover the same nonroad agricultural-engine class.
+    This build did NOT find (and is therefore NOT relying on or citing)
+    a Japanese ROPS-equivalent STATUTORY safety-certification regime as
+    directly verifiable as OSHA 29 C.F.R. §1928.51 or EU Machinery
+    Directive 2006/42/EC in this session -- MAFF-adjacent voluntary
+    safety-assessment schemes for agricultural machinery may exist but
+    were not independently verified against a primary source this
+    session, so no safety-side citation is claimed for JPN (honest gap,
+    flagged the same way DEU flags its Machinery Regulation successor-
+    date uncertainty above). Japan's sanctions / export-control regime
+    applies as in every sibling's own counterparty-diligence checklist
+    (not independently cited by statute name here for the same reason).
 
-  Internationally (outside the two seeded jurisdictions above), ISO
+  Internationally (outside the three seeded jurisdictions above), ISO
   3471 (Earth-moving machinery -- Roll-over protective structures --
   Laboratory tests and performance requirements) and the OECD's Standard
   Codes for the Official Testing of Agricultural and Forestry Tractors
@@ -118,6 +152,13 @@
           :owner-authority "Kraftfahrt-Bundesamt (KBA) / EU type-approval framework"
           :legal-basis "Regulation (EU) 2016/1628 (Stage V nonroad mobile machinery emission standards, engine-family type-approval); Machinery Directive 2006/42/EC (harmonized ROPS-equivalent essential safety requirements, EN ISO 3471); EU financial sanctions regulations"
           :provenance "https://eur-lex.europa.eu/eli/reg/2016/1628/oj"
+          :required-evidence ["credit-clearance record"
+                              "contract/PO"
+                              "sanctions-screening (OFAC/equivalent) record"]}
+   "JPN" {:name "JPN"
+          :owner-authority "Ministry of Land, Infrastructure, Transport and Tourism (MLIT), jointly with the Ministry of the Environment (MOE) and the Ministry of Economy, Trade and Industry (METI) as competent ministers (主務大臣) under Art. 34"
+          :legal-basis "特定特殊自動車排出ガスの規制等に関する法律 (Act on Regulation, etc. of Emissions from Non-road Special Motor Vehicles, official abbreviation オフロード法 / 'Off-road Law', Act No. 51 of 2005), Art. 1 (purpose: curb emissions of specified non-road special motor vehicles to protect public health and the living environment) and Art. 2 (defines 特定特殊自動車 by cross-reference to the 大型特殊自動車/小型特殊自動車 categories of the Road Vehicles Act (道路運送車両法) Art. 3); 道路運送車両法施行規則 別表第一 explicitly lists 農耕トラクタ (agricultural tractors) and other agricultural work vehicles under 大型特殊自動車, confirming agricultural machinery is within scope; Japan's sanctions/export-control regime applies as in every sibling's own counterparty-diligence checklist"
+          :provenance "https://laws.e-gov.go.jp/law/417AC0000000051"
           :required-evidence ["credit-clearance record"
                               "contract/PO"
                               "sanctions-screening (OFAC/equivalent) record"]}})
