@@ -44,10 +44,9 @@
   counterparty, or an operator trusting an ag-machinery-wholesale actor
   needs, and the evidence an operator needs if a dispatch or an invoice
   is later disputed."
-  (:require #?(:clj  [clojure.edn :as edn]
-               :cljs [cljs.reader :as edn])
-            [agmachtrade.registry :as registry]
-            [langchain.db :as d]))
+  (:require [agmachtrade.registry :as registry]
+            [langchain.db :as d]
+            [langchain-store.core :as ls]))
 
 (defprotocol Store
   (equipment-order [s id])
@@ -238,9 +237,6 @@
    :dispatch-sequence/jurisdiction       {:db/unique :db.unique/identity}
    :invoice-sequence/jurisdiction        {:db/unique :db.unique/identity}})
 
-(defn- enc [v] (pr-str v))
-(defn- dec* [s] (when s (edn/read-string s)))
-
 ;; Every equipment-order field is stored as its own Datomic attr so a
 ;; governor pull reads the exact ground truth (no blob decode). Boolean
 ;; fields are coerced on read so a missing attr reads back as false
@@ -294,21 +290,21 @@
          (map #(pull->equipment-order (d/pull (d/db conn) equipment-order-pull [:equipment-order/id %])))
          (sort-by :id)))
   (assessment-of [_ equipment-order-id]
-    (dec* (d/q '[:find ?p . :in $ ?eoid
+    (ls/dec* (d/q '[:find ?p . :in $ ?eoid
                 :where [?a :assessment/equipment-order-id ?eoid] [?a :assessment/payload ?p]]
               (d/db conn) equipment-order-id)))
   (ledger [_]
     (->> (d/q '[:find ?s ?f :where [?e :ledger/seq ?s] [?e :ledger/fact ?f]] (d/db conn))
          (sort-by first)
-         (mapv (comp dec* second))))
+         (mapv (comp ls/dec* second))))
   (dispatch-history [_]
     (->> (d/q '[:find ?s ?r :where [?e :dispatch/seq ?s] [?e :dispatch/record ?r]] (d/db conn))
          (sort-by first)
-         (mapv (comp dec* second))))
+         (mapv (comp ls/dec* second))))
   (invoice-history [_]
     (->> (d/q '[:find ?s ?r :where [?e :invoice/seq ?s] [?e :invoice/record ?r]] (d/db conn))
          (sort-by first)
-         (mapv (comp dec* second))))
+         (mapv (comp ls/dec* second))))
   (next-dispatch-sequence [_ jurisdiction]
     (or (d/q '[:find ?n . :in $ ?j
               :where [?e :dispatch-sequence/jurisdiction ?j] [?e :dispatch-sequence/next ?n]]
@@ -329,7 +325,7 @@
       (d/transact! conn [(equipment-order->tx value)])
 
       :certification-assessment/set
-      (d/transact! conn [{:assessment/equipment-order-id (first path) :assessment/payload (enc payload)}])
+      (d/transact! conn [{:assessment/equipment-order-id (first path) :assessment/payload (ls/enc payload)}])
 
       :order/mark-dispatched
       (let [equipment-order-id (first path)
@@ -339,7 +335,7 @@
         (d/transact! conn
                      [(equipment-order->tx (assoc equipment-order-patch :id equipment-order-id))
                       {:dispatch-sequence/jurisdiction jurisdiction :dispatch-sequence/next next-n}
-                      {:dispatch/seq (count (dispatch-history s)) :dispatch/record (enc (get result "record"))}])
+                      {:dispatch/seq (count (dispatch-history s)) :dispatch/record (ls/enc (get result "record"))}])
         result)
 
       :order/mark-invoiced
@@ -350,12 +346,12 @@
         (d/transact! conn
                      [(equipment-order->tx (assoc equipment-order-patch :id equipment-order-id))
                       {:invoice-sequence/jurisdiction jurisdiction :invoice-sequence/next next-n}
-                      {:invoice/seq (count (invoice-history s)) :invoice/record (enc (get result "record"))}])
+                      {:invoice/seq (count (invoice-history s)) :invoice/record (ls/enc (get result "record"))}])
         result)
       nil)
     s)
   (append-ledger! [s fact]
-    (d/transact! conn [{:ledger/seq (count (ledger s)) :ledger/fact (enc fact)}])
+    (d/transact! conn [{:ledger/seq (count (ledger s)) :ledger/fact (ls/enc fact)}])
     fact)
   (with-equipment-orders [s equipment-orders]
     (when (seq equipment-orders) (d/transact! conn (mapv equipment-order->tx (vals equipment-orders)))) s))
