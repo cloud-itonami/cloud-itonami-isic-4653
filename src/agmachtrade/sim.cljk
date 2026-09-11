@@ -1,5 +1,5 @@
 (ns agmachtrade.sim
-  "Demo driver -- `clojure -M:dev:run`. Walks a clean, ride-on,
+  "Demo driver -- `kbb -M:dev:run`. Walks a clean, ride-on,
   engine-powered tractor order through intake -> certification
   verification -> physical dispatch (escalate/approve/commit) ->
   invoice settlement (escalate/approve/commit), then shows HARD-hold
