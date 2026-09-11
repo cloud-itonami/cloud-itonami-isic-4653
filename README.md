@@ -85,7 +85,7 @@ enforce this (`agmachtrade.governor`'s `:delivery/dispatch`/`:invoice/
 settle` high-stakes gate and `agmachtrade.phase`'s phase table, which
 never puts either op in any phase's `:auto` set) -- see
 `agmachtrade.phase`'s docstring and
-`test/agmachtrade/phase_test.clj`'s
+`test/agmachtrade/phase_test.cljk`'s
 `delivery-dispatch-never-auto-at-any-phase`/
 `invoice-settle-never-auto-at-any-phase`. The actor may draft, check
 and recommend; a human trading supervisor is always the one who
@@ -212,14 +212,14 @@ identity/forms/dmn/bpmn/audit-ledger stack.
 
 | File | Role |
 |---|---|
-| `src/agmachtrade/store.cljc` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + dispatch AND invoice history (dual history). The double-actuation guard checks dedicated `:dispatched?`/`:invoiced?` booleans rather than a `:status` value |
-| `src/agmachtrade/registry.cljc` | Dispatch/invoice draft records (record construction only -- the Ag Equipment Governor's checks are direct entity booleans, so there are no pure range-check functions to host here) |
-| `src/agmachtrade/facts.cljc` | Per-jurisdiction generic counterparty-diligence catalog with an official spec-basis citation per entry, honest coverage reporting |
-| `src/agmachtrade/agmachtradeadvisor.cljc` | **AgMachTradeAdvisor** -- `mock-advisor` ‖ `llm-advisor`; intake/certification-verification/dispatch/invoice proposals |
-| `src/agmachtrade/governor.cljc` | **Ag Equipment Governor** -- 6 HARD checks (spec-basis · evidence-incomplete · credit-uncleared · contract-missing · emissions-certificate-missing · rops-certification-missing) + 1 unconditional (counterparty-sanctions-flag-unresolved) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
-| `src/agmachtrade/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (dispatch/invoice always human; order intake is the ONLY auto-eligible op, no direct capital risk) |
-| `src/agmachtrade/operation.cljc` | **OperationActor** -- langgraph StateGraph |
-| `src/agmachtrade/sim.cljc` | demo driver |
+| `src/agmachtrade/store.cljk` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + dispatch AND invoice history (dual history). The double-actuation guard checks dedicated `:dispatched?`/`:invoiced?` booleans rather than a `:status` value |
+| `src/agmachtrade/registry.cljk` | Dispatch/invoice draft records (record construction only -- the Ag Equipment Governor's checks are direct entity booleans, so there are no pure range-check functions to host here) |
+| `src/agmachtrade/facts.cljk` | Per-jurisdiction generic counterparty-diligence catalog with an official spec-basis citation per entry, honest coverage reporting |
+| `src/agmachtrade/agmachtradeadvisor.cljk` | **AgMachTradeAdvisor** -- `mock-advisor` ‖ `llm-advisor`; intake/certification-verification/dispatch/invoice proposals |
+| `src/agmachtrade/governor.cljk` | **Ag Equipment Governor** -- 6 HARD checks (spec-basis · evidence-incomplete · credit-uncleared · contract-missing · emissions-certificate-missing · rops-certification-missing) + 1 unconditional (counterparty-sanctions-flag-unresolved) + 2 double-actuation guards + 1 soft (confidence/actuation gate) |
+| `src/agmachtrade/phase.cljk` | **Phase 0→3** -- read-only → assisted intake → assisted verify → supervised (dispatch/invoice always human; order intake is the ONLY auto-eligible op, no direct capital risk) |
+| `src/agmachtrade/operation.cljk` | **OperationActor** -- langgraph StateGraph |
+| `src/agmachtrade/sim.cljk` | demo driver |
 | `test/agmachtrade/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
 
 ## Business-process coverage (honest)

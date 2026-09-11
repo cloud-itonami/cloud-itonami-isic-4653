@@ -135,7 +135,7 @@ are not interchangeable events for a regulator, insurer, or plaintiff's
 counsel reviewing this actor's history after an incident -- and would
 hide that a machine can fail one check independently of the other. See
 `docs/business-model.md` "Two genuinely independent type gates" for the
-full reasoning, and `test/agmachtrade/governor_contract_test.clj`'s
+full reasoning, and `test/agmachtrade/governor_contract_test.cljk`'s
 `emissions-certificate-missing-is-held-and-unoverridable` (`eo-6`),
 `rops-certification-missing-is-a-genuinely-different-failure-mode-from-
 emissions` (`eo-7`),
@@ -173,7 +173,7 @@ discipline every prior governor's guards establish, informed by
 `agmachtrade.store/Store` is implemented by both `MemStore` (atom-
 backed, default for dev/tests/demo) and `DatomicStore`
 (`langchain.db`-backed), proven to satisfy the same contract in
-`test/agmachtrade/store_contract_test.clj`. The ledger stays append-only
+`test/agmachtrade/store_contract_test.cljk`. The ledger stays append-only
 on every backend: which equipment-order was verified for a jurisdiction
 with no official spec-basis, which counterparty had credit-uncleared /
 no contract / a missing emissions certificate / a missing ROPS
@@ -267,7 +267,7 @@ this actor's own `:delivery/dispatch`).
   metal-wholesale sibling's single-fact-gated fold and the
   agri-raw-materials sibling's mutually-exclusive-enum split.
 - `MemStore` || `DatomicStore` parity is proven by
-  `test/agmachtrade/store_contract_test.clj`.
+  `test/agmachtrade/store_contract_test.cljk`.
 - 38 tests / 192 assertions pass; lint is clean; the demo
   (`clojure -M:dev:run`) walks one clean dispatch + invoice lifecycle,
   the two type-gating control cases (`eo-8`, `eo-9`), plus six other
