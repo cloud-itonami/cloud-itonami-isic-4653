@@ -71,7 +71,7 @@ Supplies, ISIC 4653) and to the three `:social-impact` tags in
 `blueprint.edn` (`:equipment-safety`, `:air-quality`, `:transparency`).
 
 This is the rule the companion contract test
-(`test/agmachtrade/governor_contract_test.clj`) encodes end-to-end: the
+(`test/agmachtrade/governor_contract_test.cljk`) encodes end-to-end: the
 AgMachTradeAdvisor never dispatches physical equipment to a counterparty
 or settles an invoice the Ag Equipment Governor would reject,
 `:delivery/dispatch` and `:invoice/settle` NEVER auto-commit at any
@@ -212,7 +212,7 @@ information; here, folding would).
 `agmachtrade.governor` therefore keeps `emissions-certificate-missing-
 violations` and `rops-certification-missing-violations` as TWO SEPARATE
 HARD checks, proven genuinely independent end-to-end by
-`test/agmachtrade/governor_contract_test.clj`:
+`test/agmachtrade/governor_contract_test.cljk`:
 
 - `emissions-certificate-missing-is-held-and-unoverridable` (`eo-6`) --
   an engine-powered, ride-on tractor missing its emissions certificate
