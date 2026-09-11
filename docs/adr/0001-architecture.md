@@ -269,7 +269,7 @@ this actor's own `:delivery/dispatch`).
 - `MemStore` || `DatomicStore` parity is proven by
   `test/agmachtrade/store_contract_test.cljk`.
 - 38 tests / 192 assertions pass; lint is clean; the demo
-  (`clojure -M:dev:run`) walks one clean dispatch + invoice lifecycle,
+  (`kbb -M:dev:run`) walks one clean dispatch + invoice lifecycle,
   the two type-gating control cases (`eo-8`, `eo-9`), plus six other
   HARD-hold scenarios, end-to-end.
 - `blueprint.edn` sets `:robotics false` and omits `:robotics` from
