@@ -15,7 +15,7 @@
   requirement -- `towed-implement-is-a-no-op-for-both-certification-
   checks` and `stationary-engine-unit-proves-independent-type-gating`
   below prove this end-to-end."
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [langgraph.graph :as g]
             [agmachtrade.store :as store]
             [agmachtrade.operation :as op]))
